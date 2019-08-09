@@ -46,7 +46,7 @@ router.post("/add-servivo", multer({ storage: storage }),(req, res, next) => {
         .save()
         .then(result => {
             res.status(201).json({
-                message: "SerVivo agregada",
+                message: "SerVivo agregado",
                 result: result
             });
         })
