@@ -1,7 +1,7 @@
-const express = require("express");
+const express = require('express');
 
-const Ayuda = require("../models/ayuda");
-const checkAuth = require("../middleware/check-auth");
+const Ayuda = require('../models/ayuda');
+const checkAuth = require('../middleware/check-auth');
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.post("/add-ayuda", (req, res, next) => {
         .save()
         .then(result => {
             res.status(201).json({
-                message: "Ayuda agregada",
+                message: 'Ayuda agregada',
                 result: result
             });
         })

@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require('express');
 
-const SerVivo = require("../models/servivo");
+const SerVivo = require('../models/serVivo');
 const multer = require("multer");
-const checkAuth = require("../middleware/check-auth");
+const checkAuth = require('../middleware/check-auth');
 
 const router = express.Router();
 
@@ -32,21 +32,21 @@ const storage = multer.diskStorage({
 });
 
 /**
- * AGREGAR NUEVO SER VIVO
+ * AGREGAR NUEVA PLANTA
  */
-router.post("/add-servivo", multer({ storage: storage }),(req, res, next) => {
+router.post("/add-ser-vivo", multer({ storage: storage }),(req, res, next) => {
     const url = req.protocol + "://" + req.get("host")+/images/;
-    const servivo = new SerVivo({
+    const serVivo = new SerVivo({
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         imagen: url + req.file.filename,
         region: req.body.region
     });
-    servivo
+    planta
         .save()
         .then(result => {
             res.status(201).json({
-                message: "SerVivo agregado",
+                message: 'SerVivo agregada',
                 result: result
             });
         })
@@ -59,12 +59,12 @@ router.post("/add-servivo", multer({ storage: storage }),(req, res, next) => {
 });
 
 /**
- * SER VIVO ESPECIFICO
+ * PLANTA ESPECIFICA
  */
 router.get("/:id", (req, res, next) => {
-    SerVivo.findById(req.params.id).then(servivo => {
-        if (servivo) {
-            res.status(200).json(servivo);
+    SerVivo.findById(req.params.id).then(serVivo => {
+        if (serVivo) {
+            res.status(200).json(serVivo);
         } else {
             res.status(404).json({ message: "SerVivo no encontrada" });
         }
@@ -72,13 +72,13 @@ router.get("/:id", (req, res, next) => {
         .catch(err => {
             res.status(500).json({
                 err: err,
-                message: "Método traer servivo falló"
+                message: "Método traer ser vivo falló"
             });
         });
 });
 
 /**
- * EDITAR SER VIVO
+ * EDITAR PLANTA
  */
 router.put("/edit/:id", multer({storage: storage}), (req, res, next) => {
     let imagePath = req.body.imagePath;
@@ -86,13 +86,13 @@ router.put("/edit/:id", multer({storage: storage}), (req, res, next) => {
         const url = req.protocol + "://" + req.get("host");
         imagePath = url + "/images/" + req.file.filename;
     }
-    const servivo = {
+    const serVivo = {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         imagen: imagePath,
         region: req.body.descripcion
     };
-    SerVivo.findOneAndUpdate({_id: req.params.id}, servivo).then(result => {
+    SerVivo.findOneAndUpdate({_id: req.params.id}, serVivo).then(result => {
         res.status(200).json({
             message: "Actualización exitosa"
         });
@@ -106,13 +106,13 @@ router.put("/edit/:id", multer({storage: storage}), (req, res, next) => {
 });
 
 /**
- * TRAER TODOS LOS SERES VIVOS
+ * TRAER TODAS LAS PLANTAS
  */
 router.get("", (req, res, next) => {
-    SerVivo.find().then(servivos => {
+    SerVivo.find().then(serVivo => {
         res.status(200).json({
             message: "Traídos con éxito",
-            servivos: servivos
+            serVivo: serVivo
         });
     })
         .catch(err => {
@@ -124,12 +124,12 @@ router.get("", (req, res, next) => {
 });
 
 /**
- * BORRAR SER VIVO
+ * BORRAR PLANTA
  */
 router.delete("/:id", (req, res, next) => {
     SerVivo.deleteOne({_id: req.params.id}).then(result => {
         res.status(200).json({
-            message: "Ser vivo borrado"
+            message: "ser vivo borrada"
         })
             .catch(err => {
                 res.status(500).json({

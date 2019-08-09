@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const serVivoSchema = mongoose.Schema({
     nombre: { type: String },

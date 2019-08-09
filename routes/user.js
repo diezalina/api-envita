@@ -1,8 +1,8 @@
-const express = require("express");
-const bcrypt = require("bcrypt");
+const express = require('express');
+const bcrypt = require('bcrypt');
 
-const Usuario = require("../models/user");
-const checkAuth = require("../middleware/check-auth");
+const Usuario = require('../models/user');
+const checkAuth = require('../middleware/check-auth');
 
 const router = express.Router();
 
@@ -22,7 +22,7 @@ router.post("/add-usuario", (req, res, next) => {
             .save()
             .then(result => {
                 res.status(201).json({
-                    message: "Usuario creado",
+                    message: 'Usuario creado',
                     result: result
                 });
             })

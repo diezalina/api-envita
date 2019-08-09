@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const plantaSchema = mongoose.Schema({
     nombre: { type: String },
