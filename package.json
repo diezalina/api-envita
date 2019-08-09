@@ -2,10 +2,9 @@
   "name": "api-envita",
   "version": "1.0.0",
   "description": "API for envita-soft",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:server": "nodemon server.js",
     "start": "node app.js"
   },
   "keywords": [
