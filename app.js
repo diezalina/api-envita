@@ -1,20 +1,20 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const path = require('path');
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const path = require("path");
 
-const usuarioRoutes = require('./routes/user');
-const serVivoRoutes = require('./routes/serVivo');
-const plantaRoutes = require('./routes/planta');
-const emergenciaRoutes = require('./routes/emergencia');
-const ayudaRoutes = require('./routes/ayuda');
-const asociacionRoutes = require('./routes/asociacion');
-const mobileAuth = require('./routes/loginApi');
+const usuarioRoutes = require("./routes/user");
+const serVivoRoutes = require("./routes/serVivo");
+const plantaRoutes = require("./routes/planta");
+const emergenciaRoutes = require("./routes/emergencia");
+const ayudaRoutes = require("./routes/ayuda");
+const asociacionRoutes = require("./routes/asociacion");
+const mobileAuth = require("./routes/loginApi");
 const app = express();
 
 mongoose
     .connect(
-    "mongodb+srv://envita:3nv1t42019@envita-cluster-orzvt.mongodb.net/test?retryWrites=true&w=majority"
+    "mongodb+srv://envita:3nv1t42019@envita-cluster-orzvt.mongodb.net/envita?retryWrites=true&w=majority"
     )
     .then(() => {
         console.log("Connected to db!");

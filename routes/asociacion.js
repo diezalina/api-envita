@@ -1,7 +1,7 @@
-const express = require('express');
+const express = require("express");
 
-const Asociacion = require('../models/asociacion');
-const checkAuth = require('../middleware/check-auth');
+const Asociacion = require("../models/asociacion");
+const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ router.post("/add-asociacion", (req, res, next) => {
         .save()
         .then(result => {
             res.status(201).json({
-                message: 'Asociacion agregada',
+                message: "Asociacion agregada",
                 result: result
             });
         })

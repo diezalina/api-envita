@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 
-const Planta = require('../models/planta');
+const Planta = require("../models/planta");
 const multer = require("multer");
-const checkAuth = require('../middleware/check-auth');
+const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
 
@@ -46,7 +46,7 @@ router.post("/add-planta", multer({ storage: storage }),(req, res, next) => {
         .save()
         .then(result => {
             res.status(201).json({
-                message: 'Planta agregada',
+                message: "Planta agregada",
                 result: result
             });
         })

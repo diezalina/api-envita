@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 
-const Emergencia = require('../models/emergencia');
+const Emergencia = require("../models/emergencia");
 const multer = require("multer");
-const checkAuth = require('../middleware/check-auth');
+const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
 
@@ -45,7 +45,7 @@ router.post("/add-emergencia", multer({ storage: storage }),(req, res, next) => 
         .save()
         .then(result => {
             res.status(201).json({
-                message: 'Emergencia agregada',
+                message: "Emergencia agregada",
                 result: result
             });
         })
