@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../GitHub/Envita/.idea/Envita.iml" filepath="$PROJECT_DIR$/../GitHub/Envita/.idea/Envita.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/api-envita.iml" filepath="$PROJECT_DIR$/.idea/api-envita.iml" />
     </modules>
   </component>
