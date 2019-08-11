@@ -130,13 +130,12 @@ router.delete("/:id", (req, res, next) => {
     SerVivo.deleteOne({_id: req.params.id}).then(result => {
         res.status(200).json({
             message: "ser vivo borrada"
-        })
-            .catch(err => {
-                res.status(500).json({
-                    err: err,
-                    message: "Borrar ser vivo falló"
-                });
-            });
+        });
+    }).catch(err => {
+        res.status(500).json({
+            err: err,
+            message: "Borrar ser vivo falló"
+        });
     });
 });
 

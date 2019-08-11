@@ -15,7 +15,6 @@ router.post("/add-usuario", (req, res, next) => {
             name: req.body.nombre,
             lastName: req.body.apellido,
             email: req.body.email,
-            username: req.body.username,
             password: hash
         });
         usuario
@@ -44,7 +43,6 @@ router.put("/edit/:id", (req, res, next) => {
             name: req.body.nombre,
             lastName: req.body.apellido,
             email: req.body.email,
-            username: req.body.username,
             password: hash,
         };
         Usuario.findOneAndUpdate({_id: req.params.id}, usuario).then(result => {

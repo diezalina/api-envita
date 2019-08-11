@@ -98,13 +98,12 @@ router.delete("/:id", (req, res, next) => {
     Asociacion.deleteOne({_id: req.params.id}).then(result => {
         res.status(200).json({
             message: "Asociación borrada"
-        })
-            .catch(err => {
-                res.status(500).json({
-                    err: err,
-                    message: "Borrar asociación falló"
-                });
-            });
+        });
+    }).catch(err => {
+        res.status(500).json({
+            err: err,
+            message: "Borrar asociación falló"
+        });
     });
 });
 

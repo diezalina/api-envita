@@ -130,13 +130,12 @@ router.delete("/:id", (req, res, next) => {
     Planta.deleteOne({_id: req.params.id}).then(result => {
         res.status(200).json({
             message: "Planta borrada"
-        })
-            .catch(err => {
-                res.status(500).json({
-                    err: err,
-                    message: "Borrar planta falló"
-                });
-            });
+        });
+    }).catch(err => {
+        res.status(500).json({
+            err: err,
+            message: "Borrar planta falló"
+        });
     });
 });
 
