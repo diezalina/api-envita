@@ -17,7 +17,8 @@ const cors = require("cors");
 
 mongoose
     .connect(
-    "mongodb://envita:3nv1t42019@ds261567.mlab.com:61567/envita-soft"
+    "mongodb://envita:3nv1t42019@ds261567.mlab.com:61567/envita-soft",
+        { useFindAndModify: false, useNewUrlParser: true }
     )
     .then(() => {
         console.log("Connected to db!");

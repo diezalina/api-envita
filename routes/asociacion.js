@@ -62,12 +62,14 @@ router.put("/edit/:id", (req, res, next) => {
         res.status(200).json({
             message: "Actualización exitosa"
         });
+        console.log("Se actualizo");
     })
         .catch(err => {
             res.status(500).json({
                 err: err,
                 message: "Actualización fallida"
             });
+            console.log(err);
         });
 });
 
