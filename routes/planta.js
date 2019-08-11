@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
 /**
  * AGREGAR NUEVA PLANTA
  */
-router.post("/add-planta", multer({ storage: storage }),(req, res, next) => {
+router.post("/add-planta", /*multer({ storage: storage }),*/ (req, res, next) => {
     const url = req.protocol + "://" + req.get("host")+/images/;
     const planta = new Planta({
         nombre: req.body.nombre,
@@ -80,7 +80,7 @@ router.get("/:id", (req, res, next) => {
 /**
  * EDITAR PLANTA
  */
-router.put("/edit/:id", multer({storage: storage}), (req, res, next) => {
+router.put("/edit/:id", /*multer({ storage: storage }),*/ (req, res, next) => {
     let imagePath = req.body.imagePath;
     if (req.file) {
         const url = req.protocol + "://" + req.get("host");

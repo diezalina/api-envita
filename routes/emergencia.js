@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
 /**
  * AGREGAR NUEVA EMERGENCIA
  */
-router.post("/add-emergencia", multer({ storage: storage }),(req, res, next) => {
+router.post("/add-emergencia", /*multer({ storage: storage }),*/ (req, res, next) => {
     const url = req.protocol + "://" + req.get("host")+/images/;
     const emergencia = new Emergencia({
         nombre: req.body.nombre,
@@ -79,7 +79,7 @@ router.get("/:id", (req, res, next) => {
 /**
  * EDITAR EMERGENCIA
  */
-router.put("/edit/:id", multer({storage: storage}), (req, res, next) => {
+router.put("/edit/:id", /*multer({ storage: storage }),*/ (req, res, next) => {
     let imagePath = req.body.imagePath;
     if (req.file) {
         const url = req.protocol + "://" + req.get("host");

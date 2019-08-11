@@ -10,11 +10,14 @@ const emergenciaRoutes = require("./routes/emergencia");
 const ayudaRoutes = require("./routes/ayuda");
 const asociacionRoutes = require("./routes/asociacion");
 const mobileAuth = require("./routes/loginApi");
+
 const app = express();
+
+const cors = require("cors");
 
 mongoose
     .connect(
-    "mongodb+srv://envita:3nv1t42019@envita-cluster-orzvt.mongodb.net/envita?retryWrites=true&w=majority"
+    "mongodb://envita:3nv1t42019@ds261567.mlab.com:61567/envita-soft"
     )
     .then(() => {
         console.log("Connected to db!");
@@ -23,22 +26,10 @@ mongoose
         console.log(err);
     });
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/images", express.static(path.join(__dirname, "/images")));
-
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-    );
-    res.setHeader(
-        "Access-Control-Allow-Methods",
-        "GET, POST, PUT, PATCH, DELETE, OPTIONS"
-    );
-    next();
-});
+// app.use("/images", express.static(path.join(__dirname, "/images")));
 
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/api/plantas", plantaRoutes);

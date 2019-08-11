@@ -34,15 +34,15 @@ const storage = multer.diskStorage({
 /**
  * AGREGAR NUEVA PLANTA
  */
-router.post("/add-ser-vivo", multer({ storage: storage }),(req, res, next) => {
-    const url = req.protocol + "://" + req.get("host")+/images/;
+router.post("/add-ser-vivo", /*multer({ storage: storage }),*/ (req, res, next) => {
+    // const url = req.protocol + "://" + req.get("host")+/images/;
     const serVivo = new SerVivo({
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
-        imagen: url + req.file.filename,
+        // imagen: url + req.file.filename,
         region: req.body.region
     });
-    planta
+    serVivo
         .save()
         .then(result => {
             res.status(201).json({
@@ -80,7 +80,7 @@ router.get("/:id", (req, res, next) => {
 /**
  * EDITAR PLANTA
  */
-router.put("/edit/:id", multer({storage: storage}), (req, res, next) => {
+router.put("/edit/:id", /*multer({ storage: storage }),*/ (req, res, next) => {
     let imagePath = req.body.imagePath;
     if (req.file) {
         const url = req.protocol + "://" + req.get("host");
