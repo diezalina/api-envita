@@ -10,10 +10,12 @@ const router = express.Router();
  */
 router.post("/add-ayuda", (req, res, next) => {
     const ayuda = new Ayuda({
+        nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         recomendacion: req.body.recomendacion,
         centrosDeAcopio: req.body.centrosDeAcopio,
-        donaciones: req.body.donaciones
+        donaciones: req.body.donaciones,
+        icono: req.body.icono
     });
     ayuda
         .save()
@@ -56,7 +58,10 @@ router.get("/:id", (req, res, next) => {
 router.put("/edit/:id", (req, res, next) => {
     const ayuda = {
         nombre: req.body.nombre,
-        direccion: req.body.direccion,
+        descripcion: req.body.descripcion,
+        recomendacion: req.body.recomendacion,
+        centrosDeAcopio: req.body.centrosDeAcopio,
+        donaciones: req.body.donaciones,
         icono: req.body.icono
     };
     Ayuda.findOneAndUpdate({_id: req.params.id}, ayuda).then(result => {

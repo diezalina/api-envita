@@ -39,7 +39,10 @@ router.post("/add-emergencia", /*multer({ storage: storage }),*/ (req, res, next
     const emergencia = new Emergencia({
         nombre: req.body.nombre,
         fecha: req.body.fecha,
-        imagen: url + req.file.filename
+        /*imagen: url + req.file.filename,*/
+        lugar: req.body.lugar,
+        descripcion: req.body.descripcion
+
     });
     emergencia
         .save()
@@ -88,7 +91,10 @@ router.put("/edit/:id", /*multer({ storage: storage }),*/ (req, res, next) => {
     const emergencia = {
         nombre: req.body.nombre,
         direccion: req.body.direccion,
-        imagen: imagePath
+        /*imagen: imagePath,*/
+        lugar: req.body.lugar,
+        descripcion: req.body.descripcion
+
     };
     Emergencia.findOneAndUpdate({_id: req.params.id}, emergencia).then(result => {
         res.status(200).json({
