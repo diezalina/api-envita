@@ -8,7 +8,6 @@ const router = express.Router();
 
 router.post("", (req, res, next) => {
     let fetchedUsr;
-    console.log(req.body);
     Usuario.findOne({ email: req.body.email })
         .then(usuario => {
             if (!usuario) {
@@ -17,7 +16,6 @@ router.post("", (req, res, next) => {
                 });
             }
             fetchedUsr = usuario;
-            console.log(fetchedUsr);
             return bcrypt.compare(req.body.password, usuario.password);
         })
         .then(result => {
