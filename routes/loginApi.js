@@ -32,7 +32,7 @@ router.post("", (req, res, next) => {
             );
             res.status(200).json({
                 token: token,
-                userId: fetchedUsr._id
+                usrId: fetchedUsr._id
             });
         })
         .catch(err => {
