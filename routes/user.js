@@ -13,7 +13,6 @@ router.post("/add-usuario", (req, res, next) => {
     bcrypt.hash(req.body.password, 10).then(hash => {
         const usuario = new Usuario({
             name: req.body.nombre,
-            lastName: req.body.apellido,
             email: req.body.email,
             password: hash
         });
@@ -41,7 +40,6 @@ router.put("/edit/:id", (req, res, next) => {
     bcrypt.hash(req.body.password, 10).then(hash => {
         const usuario = {
             name: req.body.nombre,
-            lastName: req.body.apellido,
             email: req.body.email,
             password: hash,
         };
